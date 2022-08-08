@@ -14,6 +14,69 @@ router.get('/students', function (req, res){
     let students = ['Sabiha', 'Neha', 'Akash']
     res.send(students)
 })
+router.get('/movies',function(req,res){
+    let movies=['Lord of the ring','Thing','Castle']
+    res.send(movies)
+})
+router.get('/movies/:indexnumber',function(req,res){
+    let movies=['Lord of the ring','Thing','Castle']
+    let number=req.params.indexnumber
+    console.log(number)
+    let len=(movies.length)-1
+
+    if(number>len){
+        res.send("please enter valid url")
+    }
+    else{
+        res.send(movies[number])
+    }
+   
+})
+router.get('/films',function(req,res){
+    
+     const films=[
+        {id:1,
+         name:"Top gun" },
+         {
+            id:2,
+            name:"Tufan"
+         },
+         {
+            id:3,
+            name:"Jaan"
+         }
+     ]  
+     res.send(films)
+       
+})
+router.get('/films/:filmid',function(req,res){
+    let number=req.params.filmid
+    // console.log(number)
+    const films=[
+       {id:1,
+        name:"Top gun" },
+        {
+           id:2,
+           name:"Tufan"
+        },
+        {
+           id:3,
+           name:"Jaan"
+        }
+    ] 
+    // films.forEach(element => (number>element.id ? res.send("Errroe") : false)
+    let leng=(films.length) 
+    if(number > leng || number ==0 || number < 0){
+        res.send("Error!!!!")
+    }
+    else{
+        const n=films.filter(item => item.id==number)
+    // console.log(n)
+        res.send(n)
+    }
+    
+      
+})
 
 router.get('/student-details/:name', function(req, res){
     /*
